@@ -1,0 +1,80 @@
+##########
+# collectionbuilder-sa
+# Jekyll Digital Collection Generator
+# https://github.com/CollectionBuilder/collectionbuilder-sa
+##########
+
+##########
+# URL VARIABLES
+#
+# site domain, full URL to the production location of your collection
+url: https://owikle.github.io
+# path to location on the domain if necessary e.g. /digital/hjccc
+baseurl: /cb-ohd
+# location of code, the full url to your github repository
+source-code: https://github.com/owikle/cb-ohd
+
+##########
+# SITE SETTINGS
+#
+# title of site appears in banner
+title: Demo CB-OHD
+
+# tagline, a short phrase that will appear throughout the site in the top banner
+tagline: Demo tagline
+# description appears in meta tags and other locations
+# this description might appear in search result lists, keep around 160 characters max
+description: "Demo description"
+# keywords, a short list of subjects describing the collection, separated by semicolon, to appear in rich markup
+keywords: idaho;history;
+# creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name
+author: owikle
+# Organization branding
+organization-name: "Center for Digital Inquiry and Learning, University of Idaho Library"
+organization-link: https://cdil.lib.uidaho.edu/
+organization-logo-banner: https://www.voicesofgayrodeo.com/images/logos/cdil.png
+organization-logo-nav: https://cdil.lib.uidaho.edu/assets/img/logo.png
+
+
+##########
+# COLLECTION SETTINGS
+#
+# choose metadata: this is the name of the csv file in your _data directory that describes the objects in your collection
+metadata: combined-cb-ohd-metadata
+# page generation settings [optional!]
+# [optional: only used if you need to tweak CB defaults or generate from more than one data file]
+page_gen:
+  - data: 'combined-cb-ohd-metadata'
+    template: 'video-embed'
+    name: 'objectid'
+    dir: 'items'
+    extension: 'html' 
+    filter: 'objectid' 
+ 
+
+##########
+# GOOGLE SERVICES [optional!]
+#
+# leave these blank or comment out to NOT include google code
+# if present, used to add analytics during "production" build only
+# google-analytics-id: ""
+# google-cse-id: ""
+
+##########
+# ROBOTS EXCLUDE
+#
+# set noindex to true if you do NOT want Google to index your site
+# noindex: true 
+
+##########
+# BUILD SETTINGS 
+#
+# Note: use environment variable on build command to include analytics
+# JEKYLL_ENV=production jekyll build
+# (this is done automatically by gh-pages build)
+#
+# ignore stuff
+exclude: [docs/, Rakefile, README.md, LICENSE]
+# compress CSS output
+sass:
+  style: compressed
