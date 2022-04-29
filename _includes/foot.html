@@ -1,0 +1,19 @@
+<!-- Optional JS for Bootstrap: jQuery first, then Bootstrap bundle JS -->
+<script src="{{ '/assets/lib/jquery-3.6.0.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/lib/bootstrap.bundle.min.js' | relative_url }}"></script>
+<!-- load other js -->
+<script src="{{ '/assets/lib/lazysizes.min.js' | relative_url }}" async></script>
+{% if page.layout == "transcript" or page.layout == 'video-embed' %}{% include js/transcript-js.html %}{% endif %}
+{% if page.layout == "transcripts" %}{% include js/transcript-js.html %}{% endif %}
+{% if page.layout == "visualization" %}{% include js/visualization-js.html %}{% endif %}
+{% if page.layout == "counties" %}{% include js/counties-js.html %}{% endif %}
+{% if layout.gallery == true or page.gallery == true %}{% include js/gallery-js.html %}{% endif %}
+{% if page.layout == "subjects" and site.data.theme.subjects-fields %}{% include js/cloud-js.html fields=site.data.theme.subjects-fields min=site.data.theme.subjects-min stopwords=site.data.theme.subjects-stopwords %}{% endif %}
+{% if page.layout == "locations" and site.data.theme.locations-fields %}{% include js/cloud-js.html fields=site.data.theme.locations-fields min=site.data.theme.locations-min stopwords=site.data.theme.locations-stopwords %}{% endif %}
+{% if page.custom-foot or layout.custom-foot %}
+{%- assign page_feet = page.custom-foot | split: ";" -%}
+{%- assign layout_feet = layout.custom-foot | split: ";" -%}
+{%- assign feet = page_feet | concat: layout_feet -%}
+{% for f in feet %}{% include {{ f }} %}
+{% endfor %}
+{%- endif -%}

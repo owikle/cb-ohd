@@ -1,0 +1,26 @@
+---
+layout: full-width-page
+---
+{%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
+<div class="container">
+
+  
+<div class="row">
+  <div class="col-md-8">
+    
+    {% include index/description.html %}
+    </div>
+  <div class="col-md-4">  
+
+    {% include index/time.html %}
+    
+    {% include index/objects.html %}
+
+  </div>
+  <div class="col-md-12">
+
+    {% include index/data-download.html %}
+
+  </div>
+
+</div>

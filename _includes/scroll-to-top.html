@@ -1,0 +1,26 @@
+<script>
+    // When the user scrolls down from the top of the document, show the button
+    window.onscroll = function () {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("scroll-to-top").style.display = "block";
+            document.getElementById('player').classList.add("iframe-wrapper")
+
+        } else {
+            document.getElementById("scroll-to-top").style.display = "none";
+            document.getElementById('player').classList.remove("iframe-wrapper")
+
+        }
+    }
+    // scroll to top function
+    function scrollToTop() {
+        $('html, body').animate({scrollTop: 0}, 750);
+        document.getElementById('player').classList.remove("iframe-wrapper")
+
+    }
+</script>
+<button id="scroll-to-top" type="button" class="btn btn-link" onclick="scrollToTop();" title="Back to Top" aria-label="Back to Top">
+    <svg class="bi icon-sprite" aria-hidden="true">
+        <use xlink:href="{{ '/assets/lib/bootstrap-icons.svg' | relative_url }}#{{ site.data.theme.icon-scroll-to-top | default: 'arrow-up-square' }}" href="{{ '/assets/lib/bootstrap-icons.svg' | relative_url }}#{{ site.data.theme.icon-scroll-to-top | default: 'arrow-up-square' }}"></use>
+    </svg>
+    <span class="sr-only">up arrow</span>
+</button>

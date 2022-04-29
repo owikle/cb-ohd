@@ -1,0 +1,21 @@
+--- 
+layout: none
+permalink: /thumb-grid.html
+# create thumb grid like devin did for home page
+# but then create a screen shot
+---
+<html>
+    <head>
+        <link rel="stylesheet" href="{% if site.data.theme.bootswatch %}https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/{{ site.data.theme.bootswatch }}/bootstrap.min.css{% else %}{{ '/assets/lib/bootstrap.min.css' | relative_url }}{% endif %}" type="text/css">
+    </head>
+    <body>
+        {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' | sort: "title" -%}
+        {%- assign moreitems = site.data[site.metadata] | where_exp: 'item','item.objectid' | sort: "youtubeid" -%}
+        <div class="container-fluid">
+            <div class="row" >
+                {% for item in items offset:3 %}<div class="col-1 p-0"><img class="w-100" src="{{ item.image_thumb | default: item.image_small | relative_url }}"></div>{% endfor %}
+                {% for item in moreitems offset:3 %}<div class="col-1 p-0"><img class="w-100" src="{{ item.image_thumb | default: item.image_small | relative_url }}"></div>{% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
